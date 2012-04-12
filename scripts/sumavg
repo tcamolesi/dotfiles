@@ -1,0 +1,2 @@
+#!/bin/bash
+awk '{ s += $1; ssqr += $1 * $1 };END { avg = s/NR; print avg, sqrt((ssqr - s*avg)/(NR-1)) }'

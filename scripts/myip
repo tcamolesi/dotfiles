@@ -1,0 +1,2 @@
+#!/bin/sh
+ip a | sed -n "/ppp0/{n;n;s/.*inet //;s/ peer.*$//;p}"

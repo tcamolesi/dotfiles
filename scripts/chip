@@ -1,0 +1,11 @@
+#!/bin/bash
+while sudo poff -a>/dev/null
+do sleep 1
+done
+sleep 2
+sudo pon
+
+sleep 3
+notify-send "Reconnected" \
+            "IP: $(myip)" \
+            -i "/usr/share/icons/oxygen/256x256/devices/network-wired.png"

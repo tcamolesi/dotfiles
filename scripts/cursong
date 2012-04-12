@@ -1,0 +1,7 @@
+#!/bin/sh
+
+dbus-send --print-reply --type=method_call --dest=org.mpris.amarok \
+          '/Player' org.freedesktop.MediaPlayer.GetMetadata |\
+          sed -n '/"artist"\|"title"/{n;s/^[^"]*"\(.*\)".*/\1/;H};${g;s/\n//;s/\n/ - /gp}'
+
+
