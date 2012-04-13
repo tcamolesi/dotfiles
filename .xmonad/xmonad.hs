@@ -35,7 +35,7 @@ instance Read UrgencyFn where
   readsPrec _ s = [(UrgencyFn . const . return $ (), s)]
 
 instance Show UrgencyFn where
-  show _ = "Why the fuck did you use the show typeclass ?"
+  show _ = ""
 
 instance UrgencyHook UrgencyFn where
   urgencyHook (UrgencyFn f) w = f w
@@ -109,7 +109,7 @@ willFloat w = withDisplay $ \d -> do
 floating = (ask >>= liftX . willFloat)
 
 main = do
-  (xmonad <=< myStatusBar) $ withUrgencyHook (UrgencyFn $ \_ -> spawn "echo ENGAGE | festival --tts") $ defaultConfig
+  (xmonad <=< myStatusBar) $ defaultConfig
     { layoutHook = myLayout
     , logHook = updatePointer (Relative 0.5 0.5)
     , manageHook = myManageHook <+> manageHook defaultConfig  
